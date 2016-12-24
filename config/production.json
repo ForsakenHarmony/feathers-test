@@ -2,11 +2,8 @@
   "host": "feathers.debugspeople.com",
   "port": 80,
   "nedb": "../data/",
-  "public": "../public/",
+  "public": "../dist/",
   "auth": {
-    "token": {
-      "secret": "FEATHERS_AUTH_SECRET"
-    },
-    "local": {}
+    "secret": "FEATHERS_AUTH_SECRET"
   }
 }

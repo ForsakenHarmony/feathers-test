@@ -26,8 +26,11 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+.cache
+
+.idea/
 
 lib/
 data/
-
-.idea/
+public/
+dist/

@@ -1,3 +1,4 @@
+import fs from 'fs';
 // Rollup plugins.
 import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
@@ -7,25 +8,13 @@ import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 import css from 'rollup-plugin-css-only';
 import inject from 'rollup-plugin-inject';
+import alias from 'rollup-plugin-alias';
 
-// function assign(target, source) {
-//   Object.keys(source).forEach((key) => {
-//     target[key] = source[key];
-//   });
-//   return target;
-// }
+const babelRc = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
+
+// import debug from 'debug';
 //
-// const babelrc = {
-//   presets: [
-//     'react',
-//     ['es2015', { modules: false }],
-//     'stage-0',
-//   ],
-//   plugins: [
-//     ['transform-react-jsx', { pragma: 'h' }],
-//     ['transform-runtime'],
-//   ],
-// };
+// debug.enable('*');
 
 export default {
   entry    : 'src/client/index.js',
@@ -34,9 +23,25 @@ export default {
   sourceMap: true,
   plugins  : [
     css({ output: 'public/styles/styles.css' }),
+    // replace({
+    //   '"react"': '"preact-compat"',
+    //   '"react-dom"': '"preact-compat"',
+    //   '\'react\'': '\'preact-compat\'',
+    //   '\'react-dom\'': '\'preact-compat\'',
+    // }),
+    alias({
+      //   '"react"'      : 'node_modules/preact-compat/src/index.js',
+      //   '"react-dom"'  : 'node_modules/preact-compat/src/index.js',
+      //   '\'react\''    : 'node_modules/preact-compat/src/index.js',
+      //   '\'react-dom\'': 'node_modules/preact-compat/src/index.js',
+      'react-dom'  : 'node_modules/preact-compat/src/index.js',
+      'react-redux': 'node_modules/react-redux/src/index.js',
+      react        : 'node_modules/preact-compat/src/index.js',
+    }),
     resolve({
       jsnext        : true,
       main          : true,
+      skip          : ['react'],
       browser       : true,
       preferBuiltins: false,
     }),
@@ -45,17 +50,11 @@ export default {
         'src/client/styles/**',
       ],
     }),
-    // babel(assign({
-    //   exclude: 'node_modules/**',
-    // }, babelrc)),
     babel({
+      babelrc: false,
       exclude: 'node_modules/**',
-    }),
-    replace({
-      '"react"': '"preact-compat"',
-      '"react-dom"': '"preact-compat"',
-      '\'react\'': '\'preact-compat\'',
-      '\'react-dom\'': '\'preact-compat\'',
+      presets: babelRc.presets,
+      plugins: babelRc.plugins,
     }),
     commonjs(),
     inject({
@@ -64,6 +63,10 @@ export default {
       
       h: ['preact', 'h'],
     }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
     (process.env.NODE_ENV === 'production' && uglify()),
   ],
 };
+

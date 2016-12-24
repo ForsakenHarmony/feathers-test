@@ -4,9 +4,8 @@
   "nedb": "../data/",
   "public": "../public/",
   "auth": {
-    "token": {
-      "secret": "ykLTSj83ANMiq6OoJxdlD8hCKd6MnLi4gFVO7d0BJhuOOmNhQyHjHkADf3HWx9B+y1YtXeGUKssEMNQclgoVlw=="
-    },
-    "local": {}
+    "secret": "ykLTSj83ANMiq6OoJxdlD8hCKd6MnLi4gFVO7d0BJhuOOmNhQyHjHkADf3HWx9B+y1YtXeGUKssEMNQclgoVlw==",
+    "successRedirect": "/chat",
+    "path": "/auth"
   }
 }

@@ -1,16 +1,22 @@
 import { Component } from 'preact';
+import { bind } from 'decko';
+
 import app from '../../feather';
 
 export default class ComposeMessage extends Component {
-  getInitialState() {
-    return { text: '' };
+  constructor(props) {
+    super(props);
+    
+    this.state = { text: '' };
   }
   
+  @bind
   updateText(ev) {
     this.setState({ text: ev.target.value });
   }
   
-  sendMessage(ev) {
+  @bind
+  sendMessage() {
     // Get the messages service
     const messageService = app.service('messages');
     // Create a new message with the text from the input field
@@ -18,12 +24,12 @@ export default class ComposeMessage extends Component {
       text: this.state.text,
     }).then(() => this.setState({ text: '' }));
     
-    ev.preventDefault();
+    // ev.preventDefault();
   }
   
   render() {
     return (
-      <form className="flex flex-row flex-space-between"
+      <form className="flex flex-row flex-space-between" action="javascript:"
             onSubmit={this.sendMessage}>
         <input type="text" name="text" className="flex flex-1"
                value={this.state.text} onChange={this.updateText}/>

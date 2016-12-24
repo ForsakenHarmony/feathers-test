@@ -1,10 +1,8 @@
 import debug from 'debug';
 
-import 'preact/devtools';
+import './index.html';
 
-import './styles/style.css';
-
-import './app/feather';
-import './app/ui/app.jsx';
+import '../app/feather';
+import '../app/ui/app.jsx';
 
 debug.enable('app:*');

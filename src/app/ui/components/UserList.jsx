@@ -1,16 +1,17 @@
 import { Component } from 'preact';
+import { route } from 'preact-router';
 import app from '../../feather';
+
+import { PLACEHOLDER } from '../../constants';
 
 export default class UserList extends Component {
   logout() {
     app.logout().then(() => {
-      window.location.href = '/index.html';
+      route('/');
     });
   }
   
-  render() {
-    const users = this.props.users;
-    
+  render({ users }, {}) {
     return <aside
       className="sidebar col col-3 flex flex-column flex-space-between">
       <header className="flex flex-row flex-center">
