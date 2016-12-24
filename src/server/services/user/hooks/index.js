@@ -2,6 +2,7 @@ const auth        = require('feathers-authentication');
 const local       = require('feathers-authentication-local');
 const permissions = require('feathers-permissions');
 const hooks       = require('feathers-hooks');
+const debug       = require('debug')('server:services:user:hooks');
 
 const gravatar    = require('./gravatar');
 const globalHooks = require('../../../hooks');
@@ -27,6 +28,7 @@ exports.before = {
   create: [
     gravatar(),
     basicPermissions,
+    (hook) => { debug(hook); },
     local.hooks.hashPassword(),
   ],
   update: [

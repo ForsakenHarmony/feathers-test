@@ -1,5 +1,5 @@
-module.exports = function (app) {
-  return function (req, res, next) {
+module.exports = function signup(app) {
+  return function signupMiddleware(req, res, next) {
     const body = req.body;
     
     // Get the user service and `create` a new user

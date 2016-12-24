@@ -17,7 +17,7 @@ export default function Store() {
     rootReducer,
     compose(
       applyMiddleware(thunk, createLogger()),
-      DevTools.instrument(),
+      DevTools.instrument()
     ),
   );
   

@@ -38,7 +38,17 @@
     "react/jsx-uses-vars": "error",
     "no-empty-pattern": "off",
     "no-script-url": "off",
-    "newline-per-chained-call": "off"
+    "newline-per-chained-call": "off",
+    "quote-props": "warn",
+    "comma-dangle": [
+      "error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }
+    ]
   },
   "parser": "babel-eslint",
   "notused": {

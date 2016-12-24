@@ -3,7 +3,7 @@ const notFound = require('./not-found-handler');
 const logger = require('./logger');
 const signup = require('./signup');
 
-module.exports = function () {
+module.exports = function middleware() {
   // Add your custom middleware here. Remember, that
   // just like Express the order matters, so error
   // handling middleware should go last.

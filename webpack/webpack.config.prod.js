@@ -55,7 +55,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../src/client/index.html'),
       minify  : {
-        removeComments: true
+        removeComments: true,
       },
     }),
   ],

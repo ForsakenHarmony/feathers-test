@@ -1,20 +1,22 @@
 'use strict';
 
-const assert = require('assert');
+const assert   = require('assert');
 const gravatar = require('../../../../src/server/services/user/hooks/gravatar.js');
 
-describe('user gravatar hook', function() {
-  it('hook can be used', function() {
+describe('user gravatar hook', () => {
+  it('hook can be used', () => {
     const mockHook = {
-      type: 'before',
-      app: {},
+      type  : 'before',
+      app   : {},
       params: {},
       result: {},
-      data: {}
+      data  : {
+        email: 'test@example.com',
+      },
     };
-
+    
     gravatar()(mockHook);
-
-    assert.ok(mockHook.gravatar);
+    
+    assert.ok(mockHook.data.avatar);
   });
 });

@@ -7,7 +7,7 @@ export default function Store() {
   const store = createStore(
     rootReducer,
     compose(
-      applyMiddleware(thunk, createLogger()),
+      applyMiddleware(thunk, createLogger())
     ),
   );
   
