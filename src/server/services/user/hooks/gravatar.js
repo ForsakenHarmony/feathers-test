@@ -14,8 +14,8 @@ const gravatarImage = (email) => {
   return `${gravatarUrl}/${hash}?${query}`;
 };
 
-module.exports = function () {
-  return function (hook) {
+module.exports = function gravatar() {
+  return function gravatarHook(hook) {
     // Assign the new data with the Gravatar image
     hook.data = Object.assign({}, hook.data, {
       avatar: gravatarImage(hook.data.email),

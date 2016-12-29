@@ -26,7 +26,7 @@ describe('Feathers application tests', () => {
       request({
         url    : 'http://localhost:3030/path/to/nowhere',
         headers: {
-          'Accept': 'text/html',
+          Accept: 'text/html',
         },
       }, (err, res, body) => {
         assert.equal(res.statusCode, 404);

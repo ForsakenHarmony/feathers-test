@@ -14,6 +14,7 @@ const services      = require('./services/index');
 
 const app = feathers();
 
+console.log(path.join(__dirname, '..'));
 app.configure(configuration(path.join(__dirname, '..')));
 
 module.exports = app;

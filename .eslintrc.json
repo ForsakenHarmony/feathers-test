@@ -1,4 +1,5 @@
 {
+  "comment": "this is a custom config, it reflects my own preferences",
   "extends": "airbnb-base",
   "plugins": [
     "react",
@@ -47,6 +48,16 @@
         "imports": "always-multiline",
         "exports": "always-multiline",
         "functions": "ignore"
+      }
+    ],
+    "no-param-reassign": [
+      "error", {
+        "props": false
+      }
+    ],
+    "no-underscore-dangle": [
+      "error", {
+        "allow": ["_id"]
       }
     ]
   },

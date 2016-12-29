@@ -5,7 +5,7 @@ const hooks       = require('feathers-hooks');
 const debug       = require('debug')('server:services:user:hooks');
 
 const gravatar    = require('./gravatar');
-const globalHooks = require('../../../hooks');
+// const globalHooks = require('../../../hooks');
 
 const basicPermissions = (hook) => {
   hook.data = Object.assign({}, hook.data, {

@@ -1,5 +1,5 @@
-module.exports = function (options) {
-  return function (hook) {
+module.exports = function process() {
+  return function processHook(hook) {
     // The authenticated user
     const user = hook.params.user;
     // The actual message text

@@ -1,10 +1,11 @@
 const auth        = require('feathers-authentication');
-const local       = require('feathers-authentication-local');
+// const local       = require('feathers-authentication-local');
 const permissions = require('feathers-permissions');
 const hooks       = require('feathers-hooks');
 
 const process        = require('./process');
-const globalHooks    = require('../../../hooks');
+// const globalHooks    = require('../../../hooks');
+
 const populateSender = hooks.populate('sentBy', {
   service: 'users',
   field  : 'userId',

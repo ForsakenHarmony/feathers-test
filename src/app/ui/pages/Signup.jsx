@@ -1,8 +1,8 @@
 import { Component } from 'preact';
 import debug from 'debug';
-import axios from 'axios';
 import { bind } from 'decko';
-// import { route } from 'preact-router';
+import { route } from 'preact-router';
+import app from '../../feather';
 
 const log = debug('app:ui:pages:signup');
 
@@ -11,12 +11,13 @@ class Signup extends Component {
   handleSubmit() {
     log(this.state);
     this.setState({ disabled: true });
-    axios.post('/auth/signup', {
+    
+    app.service('users').create({
       email   : this.state.email,
       password: this.state.password,
-    }).then((res) => {
-      log(res);
-      // route('/login');
+    }).then((user) => {
+      log(user);
+      route('/login');
     }).catch((err) => {
       log(err);
     });

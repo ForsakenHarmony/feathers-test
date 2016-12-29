@@ -1,7 +1,7 @@
 const handler = require('feathers-errors/handler');
 const notFound = require('./not-found-handler');
 const logger = require('./logger');
-const signup = require('./signup');
+// const signup = require('./signup');
 
 module.exports = function middleware() {
   // Add your custom middleware here. Remember, that
@@ -9,7 +9,7 @@ module.exports = function middleware() {
   // handling middleware should go last.
   const app = this;
   
-  app.post('/auth/signup', signup(app));
+  // app.post('/auth/signup', signup(app));
   app.use(notFound());
   app.use(logger(app));
   app.use(handler());
